@@ -4,3 +4,4 @@ require "pry"
 
 require "./lib/night_writer"
 require "./lib/alphabet"
+require "./lib/file_handler"
