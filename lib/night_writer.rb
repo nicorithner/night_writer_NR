@@ -1,13 +1,15 @@
-class NightWriter
+require "./lib/processable"
 
+class NightWriter
+  include Processable
+
+  def initialize(message)
+    @message = message
+  end
+
+  def translate_to_braille
+    output = read_file(@message)
+binding.pry
+  end
 
 end
-
-
-# class NightWriter
-#   attr_reader :file_reader
-
-#   def initialize
-#     @reader = FileHandler.new
-#   end
-# end

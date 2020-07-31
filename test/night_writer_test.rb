@@ -3,7 +3,7 @@ require "./test/test_helper"
 class NightWriterTest < Minitest::Test 
 
   def test_it_exists
-    nightwriter = NightWriter.new
+    nightwriter = NightWriter.new("data/message.txt")
     assert_instance_of NightWriter, nightwriter
   end
 
