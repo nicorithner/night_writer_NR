@@ -17,7 +17,8 @@ class NightWriter
   end
 
   def translate
-    modified = @message.gsub("modified text", " ")
+    text = read_file(@message)
+    modified = text.gsub(/[" "]/, " modified text ")
   end
 
 end
