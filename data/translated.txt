@@ -1,2 +1,0 @@
-2020-07-31 13:46:45 -0600 - Test text (when file is empty)
-2020-07-31 13:58:30 -0600 - Test text for when file is not empty

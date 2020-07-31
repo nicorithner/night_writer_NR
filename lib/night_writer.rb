@@ -8,6 +8,10 @@ class NightWriter
     @output = output
   end
 
+  def read_test_file(file)
+    read_file(file)
+  end
+
   def recieve_and_read_file
     read_file(@message)
   end
@@ -19,6 +23,7 @@ class NightWriter
   def translate
     text = read_file(@message)
     modified = text.gsub(/[" "]/, " modified text ")
+    write_file(@output, modified)
   end
 
 end
