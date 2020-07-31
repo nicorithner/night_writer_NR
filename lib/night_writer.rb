@@ -8,10 +8,6 @@ class NightWriter
     @output = output
   end
 
-  def read_test_file(file)
-    read_file(file)
-  end
-
   def recieve_and_read_file
     read_file(@message)
   end
@@ -24,6 +20,12 @@ class NightWriter
     text = read_file(@message)
     modified = text.gsub(/[" "]/, " modified text ")
     write_file(@output, modified)
+  end
+
+  ###### Helper or test method ####
+  #==== used in night_write_test: test_it_can_modify_the_input_file
+  def read_test_file(file)
+    read_file(file)
   end
 
 end
