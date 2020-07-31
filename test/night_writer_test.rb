@@ -11,6 +11,6 @@ class NightWriterTest < Minitest::Test
   def test_it_can_modify_the_input_file
     nightwriter = NightWriter.new("data/message.txt", "data/modified_text.txt")
     
-    assert_equal "hello modified text", nightwriter.translate("data/message.txt")
+    assert_equal "hello modified text world", nightwriter.translate
   end
 end

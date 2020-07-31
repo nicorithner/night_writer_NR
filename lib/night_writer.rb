@@ -12,9 +12,12 @@ class NightWriter
     read_file(@message)
   end
 
-  def output_new_file
-    new_file = write_file(@output)
-    new_file
+  def write_to_file
+    write_file(@output)
+  end
+
+  def translate
+    modified = @message.gsub("modified text", " ")
   end
 
 end
