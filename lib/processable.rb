@@ -19,6 +19,8 @@ module Processable
         f.write "#{Time.now} - Test text for when file is not empty\n"
       end
     end
+    # binding.pry
+    puts "Created #{output_file} containing #{file.read.length} characters"
   end
 
 end
