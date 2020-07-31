@@ -13,7 +13,8 @@ class NightWriter
   end
 
   def write_to_file
-    write_file(@output)
+    write_file_test(@output)
+    # write_file(@output)
   end
 
   def translate
