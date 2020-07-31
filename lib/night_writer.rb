@@ -13,7 +13,8 @@ class NightWriter
   end
 
   def output_new_file
-    write_file(@output)
+    new_file = write_file(@output)
+    new_file
   end
 
 end
