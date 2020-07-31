@@ -21,9 +21,10 @@ class NightWriterTest < Minitest::Test
   def test_it_can_write_a_new_file_using_given_output_file_name
     nightwriter = NightWriter.new("data/message.txt", "data/custom_name.txt")
     nightwriter1 = NightWriter.new("data/message.txt", "data/translated.txt")
-    nightwriter.write_to_file
-    nightwriter1.write_to_file
-    # assert_equal "data/custom_name.txt", ## pseudo code: nightwriter.out_file_name? 
+    nightwriter.translate
+    nightwriter1.translate
+    assert_equal true, File.exists?("data/custom_name.txt")
+    assert_equal true, File.exists?("data/translated.txt")
   end
   
 end
