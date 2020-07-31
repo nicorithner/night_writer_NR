@@ -9,7 +9,6 @@ class NightWriter
 
   def translate_to_braille
     output = read_file(@message)
-binding.pry
   end
 
 end
