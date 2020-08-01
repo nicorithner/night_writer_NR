@@ -6,15 +6,32 @@ class NightWriter
   def initialize(message, output)
     @message = message
     @output = output
+    @dictionary = Alphabet.new
   end
-
-  def translate
-    text = read_file(@message)
-    modified = text.gsub(/[" "]/, " modified text ")
-    write_file(@output, modified)
+  
+  def translate_to_braille(input)
+    #input = read_file(@message)
+    translated = []
+    [0,2,4].each do |index|
+      input.chars.each do |letter|
+        translated << find_and_convert_character(letter, index) << find_and_convert_character(letter, index + 1)
+      end
+      translated << "\n"
+    end
+    write_file(@output, translated.join)
+    encoded = translated.join 
   end
+  
+  
+  #####=============== HELPER METHODS
+  
+  ##==== Used in translate_to_braille_method. Converts to charted array and returns element in the braille-converted array by index provided.
+  def find_and_convert_character(character, index)
+    @dictionary.braille_alphabet[character].chars[index]
+  end
+  
+  #####=============== TEST METHODS 
 
-  ###### Helper or test method ####
   #==== used in night_write_test: test_it_can_modify_the_input_file
   def read_test_file(file)
     read_file(file)
@@ -25,4 +42,10 @@ class NightWriter
     read_file(@message)
   end
 
+  #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
+  def translate
+    text = read_file(@message)
+    modified = text.gsub(/[" "]/, " modified text ")
+    write_file(@output, modified)
+  end
 end
