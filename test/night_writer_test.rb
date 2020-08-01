@@ -26,5 +26,15 @@ class NightWriterTest < Minitest::Test
     assert_equal true, File.exists?("data/custom_name.txt")
     assert_equal true, File.exists?("data/translated.txt")
   end
+
+  def test_can_lookup_a_letter_and_create_an_charted_array
+    nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
+    assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.find_and_convert_character("a", 0..-1)
+  end
+
+  def test_can_translate_a_lower_case_letter
+    nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
+    assert_equal "0.\n..\n..\n", nightwriter.translate_to_braille("a")
+  end
   
 end
