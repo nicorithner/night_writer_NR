@@ -8,35 +8,10 @@ module Processable
   end
 
   def write_file(output_file, modified_text)
-    first_read = File.open(output_file, "r")
-    if first_read.read.empty?
-      File.open(output_file, "w") do |f|
-        f.write "#{modified_text}\n"
-      end
-    else
-      File.open(output_file, "a") do |f|
-        f.write "#{modified_text}\n"
-      end
-    end
+    first_read = File.new(output_file, "a")
+    File.open(output_file, "a") { |f| f.write "#{modified_text}\n" }
     second_read = File.open(output_file, "r")
     puts "Created #{output_file} containing #{second_read.read.length} characters"
-    # binding.pry
   end
-
-  # def write_file(output_file)
-  #   file = File.open(output_file, "r")
-
-  #   if file.read.empty?
-  #     File.open(output_file, "w") do |f|
-  #       f.write "#{Time.now} - Test text (when file is empty)\n"
-  #     end
-  #   else
-  #     File.open(output_file, "a") do |f|
-  #       f.write "#{Time.now} - Test text for when file is not empty\n"
-  #     end
-  #   end
-  #   # binding.pry
-  #   puts "Created #{output_file} containing #{file.read.length} characters"
-  # end
 
 end
