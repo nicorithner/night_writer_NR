@@ -9,8 +9,8 @@ class NightWriter
     @dictionary = Alphabet.new
   end
   
-  def translate_to_braille(input)
-    #input = read_file(@message)
+  def translate_to_braille
+    input = recieve_and_read_file
     translated = []
     [0,2,4].each do |index|
       input.chars.each do |letter|

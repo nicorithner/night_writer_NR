@@ -32,43 +32,43 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_can_lookup_a_letter_and_create_an_charted_array
-    skip
+    # skip
     nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
     
     assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.find_and_convert_character("a", 0..-1)
   end
 
   def test_can_translate_a_lower_case_letter
-    skip
-    nightwriter = NightWriter.new("data/message.txt", "data/one_letter.txt")
+    # skip
+    nightwriter = NightWriter.new("data/one_letter_a.txt", "data/braille.txt")
     
-    assert_equal "0.\n..\n..\n", nightwriter.translate_to_braille("a")
+    assert_equal "0.\n..\n..\n", nightwriter.translate_to_braille
   end
 
   def test_translates_message
-    skip
+    # skip
     nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
 
-    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", nightwriter.translate_to_braille("hello world")
+    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", nightwriter.translate_to_braille
   end
   
   def test_translates_letter_back_to_english
-    skip
-    nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
+    # skip
+    nightwriter = NightWriter.new("data/one_braille_character.txt", "data/one_letter_h.txt")
 
-    assert_equal "h", nightwriter.translate_to_english("0.00..")
+    assert_equal "h", nightwriter.translate_to_english
   end
 
   def test_translates_word_back_to_english
-    skip
-    nightwriter = NightWriter.new("data/one_braille.txt", "data/message.txt")
+    # skip
+    nightwriter = NightWriter.new("data/one_braille.txt", "data/braille_to_english.txt")
 
     assert_equal "hello", nightwriter.translate_to_english
   end
 
   def test_translates_a_sentence_back_to_english_from_translated_braille_text
     # skip
-    nightwriter = NightWriter.new("data/braille.txt", "data/message.txt")
+    nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
 
     assert_equal "hello world", nightwriter.translate_to_english
   end
