@@ -65,4 +65,11 @@ class NightWriterTest < Minitest::Test
 
     assert_equal "hello", nightwriter.translate_to_english("0.00..0..0..0.0.0.0.0.0.0..00.")
   end
+
+  def test_translates_a_sentence_back_to_english
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
+
+    assert_equal "hello world", nightwriter.translate_to_english("0.00..0..0..0.0.0.0.0.0.0..00........000.00..00.0.000.0.0.0.00.0..")
+  end
 end
