@@ -27,7 +27,13 @@ class NightWriter
   
   ####################### Currently working on
   def translate_to_english(braille)
-    @dictionary.english_braille[braille]
+    in_english = [ ]
+    braille_characters_array = braille.scan(/.{6}/)
+
+    braille_characters_array.each do |character|
+      in_english << @dictionary.english_braille[character]
+    end
+    in_english.join
   end
 
 
