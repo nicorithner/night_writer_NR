@@ -1,4 +1,6 @@
 require "./lib/processable"
+require "./lib/alphabet.rb"
+
 
 class NightWriter
   include Processable
@@ -79,3 +81,7 @@ class NightWriter
     write_file(@output, modified)
   end
 end
+
+# nightwriter = NightWriter.new(ARGV[0], ARGV[1])
+
+# nightwriter.translate_to_braille
