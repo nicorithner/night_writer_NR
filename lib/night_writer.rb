@@ -20,7 +20,7 @@ class NightWriter
           if letter == letter.upcase || letter.nil?
             letter = letter.downcase
           end
-          translated << find_and_convert_character(letter, index) << find_and_convert_character(letter, index + 1)
+          translated << encode_letter(letter, index) << encode_letter(letter, index + 1)
         end
         translated << "\n"
       end
@@ -30,22 +30,14 @@ class NightWriter
   end
 
   def translate_to_english
-    characters_in_split_arrays
-    assembled_characters = characters_in_split_arrays.map {|array| array.join}
-    in_english = [ ]
-    braille_characters_array = assembled_characters
-    
-    braille_characters_array.each do |character|
-      in_english << @dictionary.english_braille[character]
-    end
-    write_file(@output, in_english.join)
-    in_english.join
+    write_file(@output, string_in_english)
+    string_in_english
   end
 
   #####=============== HELPER METHODS
   
   ##==== Used in translate_to_braille_method. Converts to charted array and returns element in the braille-converted array by index provided.
-  def find_and_convert_character(character, index)
+  def encode_letter(character, index)
     @dictionary.braille_alphabet[character].chars[index]
   end
   
@@ -71,6 +63,15 @@ class NightWriter
     characters_in_split_arrays = row_one.zip(row_two, row_three)
   end
 
+  def string_in_english
+    characters_in_split_arrays
+    assembled_characters = characters_in_split_arrays.map {|array| array.join}
+    in_english = [ ]
+    assembled_characters.each do |character|
+      in_english << @dictionary.english_braille[character]
+    end
+    in_english.join
+  end
 
   #####=============== TEST METHODS 
 

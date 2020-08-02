@@ -33,7 +33,7 @@ class NightWriterTest < Minitest::Test
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
     
-    assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.find_and_convert_character("a", 0..-1)
+    assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.encode_letter("a", 0..-1)
   end
 
   def test_can_translate_a_lower_case_letter
