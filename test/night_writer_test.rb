@@ -72,4 +72,11 @@ class NightWriterTest < Minitest::Test
 
     assert_equal "hello world", nightwriter.translate_to_english
   end
+
+  def test_moves_to_new_lines_when_braille_translation_over_80_spaces
+    # skip
+    nightwriter = NightWriter.new("data/eighty_plus.txt", "data/eighty_plus_braille.txt")
+    nightwriter.translate_to_english
+    assert_equal "0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n0.\n..\n..\n", nightwriter.read_test_file("data/eighty_plus_braille.txt")
+  end
 end
