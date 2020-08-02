@@ -25,7 +25,18 @@ class NightWriter
     translated.join
   end
   
-  
+  ####################### Currently working on
+  def translate_to_english(braille)
+
+  end
+
+
+
+
+
+
+
+  ####################### End of Currently working on
   #####=============== HELPER METHODS
   
   ##==== Used in translate_to_braille_method. Converts to charted array and returns element in the braille-converted array by index provided.
