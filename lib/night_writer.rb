@@ -12,9 +12,9 @@ class NightWriter
   end
 
   def translate_to_braille
-    array_by_40_characters = recieve_and_read_file.scan(/.{1,40}/)
+    array_by_40_characters
+
     translated = []
-    
     array_by_40_characters.each do |input|
       [0,2,4].each do |index|
         input.chars.each do |letter|
@@ -54,7 +54,6 @@ class NightWriter
     in_english.join
   end
 
-  ####################### End of Currently working on
   #####=============== HELPER METHODS
   
   ##==== Used in translate_to_braille_method. Converts to charted array and returns element in the braille-converted array by index provided.
@@ -62,6 +61,15 @@ class NightWriter
     @dictionary.braille_alphabet[character].chars[index]
   end
   
+  #==== Used in in translate_to_braille and translate_to_english. Used in processable_test to test_it_can_read_a_file
+  def recieve_and_read_file
+    read_file(@message)
+  end
+
+  #==== Used in in translate_to_braille to limit the amount of characters to 40 per "lin"
+  def array_by_40_characters 
+    recieve_and_read_file.scan(/.{1,40}/)
+  end
   #####=============== TEST METHODS 
 
   #==== used in night_write_test: test_it_can_modify_the_input_file
@@ -69,10 +77,7 @@ class NightWriter
     read_file(file)
   end
 
-  #==== used in processabel_test to test_it_can_read_a_file
-  def recieve_and_read_file
-    read_file(@message)
-  end
+  
 
   #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
   def translate
