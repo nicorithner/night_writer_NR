@@ -25,22 +25,29 @@ class NightWriter
     translated.join
   end
   
-  ####################### Currently working on
-  def translate_to_english(braille)
+  def translate_to_english
+    text = recieve_and_read_file
+    line_by_line = text.split("\n")
+    row_one = []
+    row_two = []
+    row_three = []
+    
+    row_one = line_by_line[0].scan(/../)
+    row_two = line_by_line[1].scan(/../)
+    row_three = line_by_line[2].scan(/../)
+    
+    characters_in_split_arrays = row_one.zip(row_two, row_three)
+    assembled_characters = characters_in_split_arrays.map {|array| array.join}
+    
     in_english = [ ]
-    braille_characters_array = braille.scan(/.{6}/)
-
+    braille_characters_array = assembled_characters
+    
     braille_characters_array.each do |character|
       in_english << @dictionary.english_braille[character]
     end
+    write_file(@output, in_english.join)
     in_english.join
   end
-
-
-
-
-
-
 
   ####################### End of Currently working on
   #####=============== HELPER METHODS
