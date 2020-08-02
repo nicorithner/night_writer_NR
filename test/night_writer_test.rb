@@ -25,8 +25,8 @@ class NightWriterTest < Minitest::Test
     nightwriter.translate
     nightwriter1.translate
 
-    assert_equal true, File.exists?("data/custom_name.txt")
-    assert_equal true, File.exists?("data/translated.txt")
+    assert_equal true, File.exist?("data/custom_name.txt")
+    assert_equal true, File.exist?("data/translated.txt")
   end
 
   def test_can_lookup_a_letter_and_create_an_charted_array
@@ -65,14 +65,14 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_translates_a_sentence_back_to_english_from_translated_braille_text
-    skip
+    # skip
     nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
 
     assert_equal "hello world", nightwriter.translate_to_english
   end
 
   def test_moves_to_new_lines_when_braille_translation_over_80_spaces
-    skip
+    # skip
     nightwriter = NightWriter.new("data/eighty_plus.txt", "data/eighty_plus_braille.txt")
 
     expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n..\n"

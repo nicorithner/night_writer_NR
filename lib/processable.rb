@@ -8,7 +8,6 @@ module Processable
   end
 
   def write_file(output_file, modified_text)
-    first_read = File.new(output_file, "w")
     File.open(output_file, "w") { |f| f.write "#{modified_text}".chomp }
     second_read = File.open(output_file, "r")
     puts "Created #{output_file} containing #{second_read.read.length} characters"

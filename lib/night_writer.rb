@@ -77,7 +77,7 @@ class NightWriter
   #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
   def translate
     text = read_file(@message)
-    modified = text.gsub(/[" "]/, " modified text ")
+    modified = text.gsub(/[ ]/, " modified text ")
     write_file(@output, modified)
   end
 end
