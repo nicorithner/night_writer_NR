@@ -9,7 +9,7 @@ module Processable
 
   def write_file(output_file, modified_text)
     first_read = File.new(output_file, "a")
-    File.open(output_file, "a") { |f| f.write "#{modified_text}\n" }
+    File.open(output_file, "a") { |f| f.write "#{modified_text}".chomp }
     second_read = File.open(output_file, "r")
     puts "Created #{output_file} containing #{second_read.read.length} characters"
   end

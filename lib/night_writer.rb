@@ -8,23 +8,26 @@ class NightWriter
     @output = output
     @dictionary = Alphabet.new
   end
-  
+
   def translate_to_braille
-    input = recieve_and_read_file
+    array_by_40_characters = recieve_and_read_file.scan(/.{1,40}/)
     translated = []
-    [0,2,4].each do |index|
-      input.chars.each do |letter|
-        if letter == letter.upcase || letter.nil?
-          letter = letter.downcase
+    
+    array_by_40_characters.each do |input|
+      [0,2,4].each do |index|
+        input.chars.each do |letter|
+          if letter == letter.upcase || letter.nil?
+            letter = letter.downcase
+          end
+          translated << find_and_convert_character(letter, index) << find_and_convert_character(letter, index + 1)
         end
-        translated << find_and_convert_character(letter, index) << find_and_convert_character(letter, index + 1)
+        translated << "\n"
       end
-      translated << "\n"
     end
     write_file(@output, translated.join)
     translated.join
   end
-  
+
   def translate_to_english
     text = recieve_and_read_file
     line_by_line = text.split("\n")
