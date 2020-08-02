@@ -30,16 +30,14 @@ class NightWriter
   end
 
   def translate_to_english
-    # text = recieve_and_read_file
     array_of_lines = recieve_and_read_file.split("\n")
-    binding.pry
     row_one = []
     row_two = []
     row_three = []
     
-    row_one = line_by_line[0].scan(/../)
-    row_two = line_by_line[1].scan(/../)
-    row_three = line_by_line[2].scan(/../)
+    row_one = array_of_lines[0].scan(/../)
+    row_two = array_of_lines[1].scan(/../)
+    row_three = array_of_lines[2].scan(/../)
     
     characters_in_split_arrays = row_one.zip(row_two, row_three)
     assembled_characters = characters_in_split_arrays.map {|array| array.join}
