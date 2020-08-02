@@ -11,7 +11,6 @@ class NightWriterTest < Minitest::Test
   def test_it_can_modify_the_input_file
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
-    
     nightwriter.translate
 
     assert_equal "hello modified text world", nightwriter.read_test_file("data/translated.txt")
@@ -21,7 +20,6 @@ class NightWriterTest < Minitest::Test
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/custom_name.txt")
     nightwriter1 = NightWriter.new("data/message.txt", "data/translated.txt")
-    
     nightwriter.translate
     nightwriter1.translate
 
@@ -80,7 +78,7 @@ class NightWriterTest < Minitest::Test
     assert_equal expected, nightwriter.translate_to_braille
   end
 
-  def test_it_can_accept_files_from_the_command_line
+  def test_it_can_accept_files_from_the_command_line ## Requires user input: test/night_writer_test.rb "data/message.txt" "data/from_command_line.txt"
     skip
     nightwriter = NightWriter.new(ARGV[0], ARGV[1])
 
@@ -89,22 +87,4 @@ class NightWriterTest < Minitest::Test
     assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...", nightwriter.read_test_file("data/from_command_line.txt")
   end
 
-  def test_it_can_read_a_file
-    # skip
-    test_object = NightWriter.new("data/message.txt", "data/translated.txt")
-    assert_equal "hello world", test_object.recieve_and_read_file
-  end
-
-  def test_helper_method_array_by_40_characters
-    # skip
-    nightwriter = NightWriter.new("data/eighty_plus.txt", "data/translated.txt")
-
-    assert_equal ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a"], nightwriter.array_by_40_characters
-  end
-
-  def test_helper_method_array_by_40_characters
-    nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
-
-    assert_equal ["0.", "00", ".."], nightwriter.characters_in_split_arrays[0]
-  end
 end
