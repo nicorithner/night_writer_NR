@@ -13,7 +13,6 @@ class NightWriter
 
   def translate_to_braille
     array_by_40_characters
-
     translated = []
     array_by_40_characters.each do |input|
       [0,2,4].each do |index|
@@ -31,8 +30,9 @@ class NightWriter
   end
 
   def translate_to_english
-    text = recieve_and_read_file
-    line_by_line = text.split("\n")
+    # text = recieve_and_read_file
+    array_of_lines = recieve_and_read_file.split("\n")
+    binding.pry
     row_one = []
     row_two = []
     row_three = []

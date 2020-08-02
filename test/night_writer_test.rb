@@ -9,7 +9,7 @@ class NightWriterTest < Minitest::Test
   end
   
   def test_it_can_modify_the_input_file
-    # skip
+    skip
     nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
     
     nightwriter.translate
@@ -18,7 +18,7 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_it_can_write_a_new_file_using_given_output_file_name
-    # skip
+    skip
     nightwriter = NightWriter.new("data/message.txt", "data/custom_name.txt")
     nightwriter1 = NightWriter.new("data/message.txt", "data/translated.txt")
     
@@ -30,35 +30,35 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_can_lookup_a_letter_and_create_an_charted_array
-    # skip
+    skip
     nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
     
     assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.find_and_convert_character("a", 0..-1)
   end
 
   def test_can_translate_a_lower_case_letter
-    # skip
+    skip
     nightwriter = NightWriter.new("data/one_letter_a.txt", "data/braille.txt")
     
     assert_equal "0.\n..\n..\n", nightwriter.translate_to_braille
   end
 
   def test_translates_message
-    # skip
+    skip
     nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
 
     assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", nightwriter.translate_to_braille
   end
   
   def test_translates_letter_back_to_english
-    # skip
+    skip
     nightwriter = NightWriter.new("data/one_braille_character.txt", "data/one_letter_h.txt")
 
     assert_equal "h", nightwriter.translate_to_english
   end
 
   def test_translates_word_back_to_english
-    # skip
+    skip
     nightwriter = NightWriter.new("data/one_braille.txt", "data/braille_to_english.txt")
 
     assert_equal "hello", nightwriter.translate_to_english
@@ -72,7 +72,7 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_moves_to_new_lines_when_braille_translation_over_80_spaces
-    # skip
+    skip
     nightwriter = NightWriter.new("data/eighty_plus.txt", "data/eighty_plus_braille.txt")
 
     expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n..\n"
@@ -90,15 +90,21 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_it_can_read_a_file
-    # skip
+    skip
     test_object = NightWriter.new("data/message.txt", "data/translated.txt")
     assert_equal "hello world", test_object.recieve_and_read_file
   end
 
   def test_helper_method_array_by_40_characters
-    # skip
+    skip
     nightwriter = NightWriter.new("data/eighty_plus.txt", "data/translated.txt")
 
     assert_equal ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a"], nightwriter.array_by_40_characters
+  end
+
+  def test_helper_method_array_of_lines
+    nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
+    
+    assert_instance_of ["0.0.0.0.0....00.0.0.00", "00.00.0..0..00.0000..0", "....0.0.0....00.0.0..."], nightwriter.array_of_lines("0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...")
   end
 end
