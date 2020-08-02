@@ -14,12 +14,15 @@ class NightWriter
     translated = []
     [0,2,4].each do |index|
       input.chars.each do |letter|
+        if letter == letter.upcase || letter.nil?
+          letter = letter.downcase
+        end
         translated << find_and_convert_character(letter, index) << find_and_convert_character(letter, index + 1)
       end
       translated << "\n"
     end
     write_file(@output, translated.join)
-    encoded = translated.join 
+    translated.join
   end
   
   
