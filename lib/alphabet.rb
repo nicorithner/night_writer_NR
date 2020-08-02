@@ -1,5 +1,5 @@
 class Alphabet
-	attr_reader :braille_alphabet
+	attr_reader :braille_alphabet, :english_braille
 
 	def initialize
 		@braille_alphabet = {

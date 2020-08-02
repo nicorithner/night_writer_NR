@@ -27,7 +27,7 @@ class NightWriter
   
   ####################### Currently working on
   def translate_to_english(braille)
-
+    @dictionary.english_braille[braille]
   end
 
 
