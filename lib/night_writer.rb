@@ -4,8 +4,8 @@ require "./lib/alphabet.rb"
 
 
 class NightWriter
-  include Processable
-  include Toolsable
+  include Processable # only handles input and output of files
+  include Toolsable # helper methods used to process a translation
 
   def initialize(message, output)
     @message = message
