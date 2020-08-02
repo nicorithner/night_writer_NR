@@ -12,12 +12,12 @@ module Toolsable
     read_file(@message)
   end
 
-  #==== Used in in translate_to_braille to limit the amount of characters to 40 per "lin"
+  #==== Used in in translate_to_braille to limit the amount of characters to 40 per "line"
   def array_by_40_characters 
     recieve_and_read_file.scan(/.{1,40}/)
   end
 
-  #==== Used in in translate_to_english. Organizes the lines of braille into character arrays.
+  #==== Used in in string_in_english method to translate_to_english. Organizes the lines of braille into character arrays.
   def characters_in_split_arrays
     array_of_lines = recieve_and_read_file.split("\n")
     row_one = []
