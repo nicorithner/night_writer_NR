@@ -25,8 +25,8 @@ class NightWriterTest < Minitest::Test
     nightwriter.translate
     nightwriter1.translate
 
-    assert_equal true, File.exists?("data/custom_name.txt")
-    assert_equal true, File.exists?("data/translated.txt")
+    assert_equal true, File.exist?("data/custom_name.txt")
+    assert_equal true, File.exist?("data/translated.txt")
   end
 
   def test_can_lookup_a_letter_and_create_an_charted_array
