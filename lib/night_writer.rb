@@ -30,18 +30,8 @@ class NightWriter
   end
 
   def translate_to_english
-    array_of_lines = recieve_and_read_file.split("\n")
-    row_one = []
-    row_two = []
-    row_three = []
-    
-    row_one = array_of_lines[0].scan(/../)
-    row_two = array_of_lines[1].scan(/../)
-    row_three = array_of_lines[2].scan(/../)
-    
-    characters_in_split_arrays = row_one.zip(row_two, row_three)
+    characters_in_split_arrays
     assembled_characters = characters_in_split_arrays.map {|array| array.join}
-    
     in_english = [ ]
     braille_characters_array = assembled_characters
     
@@ -68,6 +58,19 @@ class NightWriter
   def array_by_40_characters 
     recieve_and_read_file.scan(/.{1,40}/)
   end
+
+  #==== Used in in translate_to_english. Organizes the lines of braille into character arrays.
+  def characters_in_split_arrays
+    array_of_lines = recieve_and_read_file.split("\n")
+    row_one = []
+    row_two = []
+    row_three = []
+    row_one = array_of_lines[0].scan(/../)
+    row_two = array_of_lines[1].scan(/../)
+    row_three = array_of_lines[2].scan(/../) 
+    characters_in_split_arrays = row_one.zip(row_two, row_three)
+  end
+
 
   #####=============== TEST METHODS 
 

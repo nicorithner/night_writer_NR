@@ -102,4 +102,9 @@ class NightWriterTest < Minitest::Test
     assert_equal ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a"], nightwriter.array_by_40_characters
   end
 
+  def test_helper_method_array_by_40_characters
+    nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
+
+    assert_equal ["0.", "00", ".."], nightwriter.characters_in_split_arrays[0]
+  end
 end
