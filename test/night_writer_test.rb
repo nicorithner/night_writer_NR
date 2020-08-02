@@ -88,4 +88,17 @@ class NightWriterTest < Minitest::Test
     
     assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...", nightwriter.read_test_file("data/from_command_line.txt")
   end
+
+  def test_it_can_read_a_file
+    # skip
+    test_object = NightWriter.new("data/message.txt", "data/translated.txt")
+    assert_equal "hello world", test_object.recieve_and_read_file
+  end
+
+  def test_helper_method_array_by_40_characters
+    # skip
+    nightwriter = NightWriter.new("data/eighty_plus.txt", "data/translated.txt")
+
+    assert_equal ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "a"], nightwriter.array_by_40_characters
+  end
 end
