@@ -70,14 +70,13 @@ class NightWriter
   def array_by_40_characters 
     recieve_and_read_file.scan(/.{1,40}/)
   end
+
   #####=============== TEST METHODS 
 
   #==== used in night_write_test: test_it_can_modify_the_input_file
   def read_test_file(file)
     read_file(file)
   end
-
-  
 
   #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
   def translate
