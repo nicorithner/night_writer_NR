@@ -67,7 +67,7 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_translates_a_sentence_back_to_english_from_translated_braille_text
-    # skip
+    skip
     nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
 
     assert_equal "hello world", nightwriter.translate_to_english
@@ -80,5 +80,13 @@ class NightWriterTest < Minitest::Test
     expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n..\n"
     
     assert_equal expected, nightwriter.translate_to_braille
+  end
+
+  def test_it_can_accept_files_from_the_command_line
+    nightwriter = NightWriter.new(ARGV[0], ARGV[1])
+
+    nightwriter.translate_to_braille
+    
+    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...", nightwriter.read_test_file("data/from_command_line.txt")
   end
 end
