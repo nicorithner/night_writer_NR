@@ -38,14 +38,14 @@ class NightWriterTest < Minitest::Test
     # skip
     nightwriter = NightWriter.new("data/one_letter_a.txt", "data/braille.txt")
     
-    assert_equal "0.\n..\n..\n", nightwriter.translate_to_braille
+    assert_equal "0.\n..\n..", nightwriter.translate_to_braille
   end
 
   def test_translates_message
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
 
-    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", nightwriter.translate_to_braille
+    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...", nightwriter.translate_to_braille
   end
   
   def test_translates_letter_back_to_english
@@ -73,7 +73,7 @@ class NightWriterTest < Minitest::Test
     # skip
     nightwriter = NightWriter.new("data/eighty_plus.txt", "data/eighty_plus_braille.txt")
 
-    expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n..\n"
+    expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n.."
     
     assert_equal expected, nightwriter.translate_to_braille
   end
