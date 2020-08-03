@@ -18,7 +18,7 @@ class ProcessableTest < Minitest::Test
     # skip
     translator = EnglishTranslator.new("data/message.txt", "data/processable_can_write.txt")
     translator.can_modify
-    assert_equal "hello modified text world", translator.read_test_file("data/translated.txt")
+    assert_equal "hello modified text world", translator.read_test_file("data/processable_can_write.txt")
   end
 
 end
