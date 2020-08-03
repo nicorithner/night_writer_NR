@@ -8,7 +8,7 @@ class ToolsableTest < Minitest::Test
     
     assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.encode_letter("a", 0..-1)
   end
-  
+
   def test_it_can_read_a_file
     # skip
     test_object = NightWriter.new("data/message.txt", "data/translated.txt")
@@ -27,5 +27,11 @@ class ToolsableTest < Minitest::Test
     nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
 
     assert_equal ["0.", "00", ".."], nightwriter.characters_in_split_arrays[0]
+  end
+
+  def test_string_in_english
+    # skip
+    nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
+    assert_equal "hello world", nightwriter.string_in_english
   end
 end
