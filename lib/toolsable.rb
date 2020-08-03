@@ -26,7 +26,7 @@ module Toolsable
     row_one = array_of_lines[0].scan(/../)
     row_two = array_of_lines[1].scan(/../)
     row_three = array_of_lines[2].scan(/../) 
-    characters_in_split_arrays = row_one.zip(row_two, row_three)
+    row_one.zip(row_two, row_three)
   end
   
   #==== Used in in translate_to_english
@@ -38,6 +38,23 @@ module Toolsable
       in_english << @dictionary.english_braille[character]
     end
     in_english.join
+  end
+
+  def string_in_braille
+    array_by_40_characters
+    translated = []
+    array_by_40_characters.each do |input|
+      [0,2,4].each do |index|
+        input.chars.each do |letter|
+          if letter == letter.upcase || letter.nil?
+            letter = letter.downcase
+          end
+          translated << encode_letter(letter, index) << encode_letter(letter, index + 1)
+        end
+        translated << "\n"
+      end
+    end
+    translated.join
   end
 
   #####=============== TEST METHODS 
