@@ -34,4 +34,11 @@ class ToolsableTest < Minitest::Test
     nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
     assert_equal "hello world", nightwriter.string_in_english
   end
+
+  def test_read_test_file_can_read_a_give_file
+    # skip
+    nightwriter = NightWriter.new("data/can_read.txt", "data/translated.txt")
+
+    assert_equal "I can read this", nightwriter.read_test_file("data/can_read.txt")
+  end
 end
