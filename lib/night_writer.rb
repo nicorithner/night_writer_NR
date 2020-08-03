@@ -1,24 +1,24 @@
-require "./lib/processable"
-require "./lib/toolsable"
-require "./lib/alphabet.rb"
+# require "./lib/processable"
+# require "./lib/toolsable"
+# require "./lib/alphabet.rb"
 
 
-class NightWriter
-  include Processable # only handles input and output of files
-  include Toolsable # helper methods used to process a translation
+# class NightWriter
+#   include Processable # only handles input and output of files
+#   include Toolsable # helper methods used to process a translation
 
-  def initialize(message, output)
-    @message = message
-    @output = output
-    @dictionary = Alphabet.new
-  end
+#   def initialize(message, output)
+#     @message = message
+#     @output = output
+#     @dictionary = Alphabet.new
+#   end
 
-  def translate_to_english
-    write_file(@output, string_in_english)
-    string_in_english
-  end
+#   def translate_to_english
+#     write_file(@output, string_in_english)
+#     string_in_english
+#   end
 
-end
+# end
 
 # require "./lib/alphabet.rb"
 # require "pry"
