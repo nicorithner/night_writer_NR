@@ -2,6 +2,13 @@ require "./test/test_helper"
 
 class ToolsableTest < Minitest::Test 
 
+  def test_can_lookup_a_letter_and_create_an_charted_array
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
+    
+    assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.encode_letter("a", 0..-1)
+  end
+  
   def test_it_can_read_a_file
     # skip
     test_object = NightWriter.new("data/message.txt", "data/translated.txt")
