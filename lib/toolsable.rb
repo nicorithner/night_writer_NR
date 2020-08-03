@@ -25,7 +25,7 @@ module Toolsable
     row_three = array_of_lines[2].scan(/../).to_a
     row_one.zip(row_two, row_three)
   end
-  
+
   #==== Used in in translate_to_english
   def string_in_english
     characters_in_split_arrays
