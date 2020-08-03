@@ -13,11 +13,6 @@ class NightWriter
     @dictionary = Alphabet.new
   end
 
-  def translate_to_braille
-    write_file(@output, string_in_braille)
-    string_in_braille
-  end
-
   def translate_to_english
     write_file(@output, string_in_english)
     string_in_english
@@ -25,6 +20,8 @@ class NightWriter
 
 end
 
+# require "./lib/alphabet.rb"
+# require "pry"
 # nightwriter = NightWriter.new(ARGV[0], ARGV[1])
 
 # nightwriter.translate_to_braille
