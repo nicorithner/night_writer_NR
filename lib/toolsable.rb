@@ -48,10 +48,10 @@ module Toolsable
   end
 
   #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
-  def translate
+  def can_modify
     text = read_file(@message)
     modified = text.gsub(/[ ]/, " modified text ")
     write_file(@output, modified)
   end
 
-end
+end 

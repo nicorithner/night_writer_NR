@@ -17,7 +17,7 @@ class ProcessableTest < Minitest::Test
   def test_it_can_write_to_a_file
     # skip
     test_object = NightWriter.new("data/message.txt", "data/processable_can_write.txt")
-    test_object.translate
+    test_object.can_modify
     assert_equal "hello modified text world", test_object.read_test_file("data/translated.txt")
   end
 

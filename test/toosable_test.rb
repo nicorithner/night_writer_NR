@@ -41,4 +41,12 @@ class ToolsableTest < Minitest::Test
 
     assert_equal "I can read this", nightwriter.read_test_file("data/can_read.txt")
   end
+
+  def test_helper_can_modify_changes_the_input_file
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
+    nightwriter.can_modify
+
+    assert_equal "hello modified text world", nightwriter.read_test_file("data/translated.txt")
+  end
 end

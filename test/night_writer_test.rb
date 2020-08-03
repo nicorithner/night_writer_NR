@@ -11,7 +11,7 @@ class NightWriterTest < Minitest::Test
   def test_it_can_modify_the_input_file
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
-    nightwriter.translate
+    nightwriter.can_modify
 
     assert_equal "hello modified text world", nightwriter.read_test_file("data/translated.txt")
   end
@@ -20,8 +20,8 @@ class NightWriterTest < Minitest::Test
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/custom_name.txt")
     nightwriter1 = NightWriter.new("data/message.txt", "data/translated.txt")
-    nightwriter.translate
-    nightwriter1.translate
+    nightwriter.can_modify
+    nightwriter1.can_modify
 
     assert_equal true, File.exist?("data/custom_name.txt")
     assert_equal true, File.exist?("data/translated.txt")
