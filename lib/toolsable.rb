@@ -17,27 +17,23 @@ module Toolsable
     recieve_and_read_file.scan(/.{1,40}/)
   end
 
-  #==== Used in in string_in_english method to translate_to_english. Organizes the lines of braille into character arrays.
+  #==== Used in in assembled_characters. Organizes the lines of braille into character arrays.
   def characters_in_split_arrays
     array_of_lines = recieve_and_read_file.split("\n")
-    row_one = []
-    row_two = []
-    row_three = []
-    row_one = array_of_lines[0].scan(/../)
-    row_two = array_of_lines[1].scan(/../)
-    row_three = array_of_lines[2].scan(/../) 
+    row_one = array_of_lines[0].scan(/../).to_a
+    row_two = array_of_lines[1].scan(/../).to_a
+    row_three = array_of_lines[2].scan(/../).to_a
     row_one.zip(row_two, row_three)
+  end
+
+  #====Used in string_in_english. Puts together braille characters so they can be translated.
+  def assembled_characters
+    characters_in_split_arrays.map {|array| array.join}
   end
   
   #==== Used in in translate_to_english
   def string_in_english
-    characters_in_split_arrays
-    assembled_characters = characters_in_split_arrays.map {|array| array.join}
-    in_english = [ ]
-    assembled_characters.each do |character|
-      in_english << @dictionary.english_braille[character]
-    end
-    in_english.join
+    in_english = assembled_characters.map {|character| @dictionary.english_braille[character]}.join
   end
 
   def string_in_braille
