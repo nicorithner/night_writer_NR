@@ -33,7 +33,7 @@ module Toolsable
   
   #==== Used in in translate_to_english
   def string_in_english
-    in_english = assembled_characters.map {|character| @dictionary.english_braille[character]}.join
+    assembled_characters.map {|character| @dictionary.english_braille[character]}.join
   end
 
   def string_in_braille
