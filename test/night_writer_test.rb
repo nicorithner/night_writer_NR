@@ -27,18 +27,25 @@ class NightWriterTest < Minitest::Test
     assert_equal true, File.exist?("data/translated.txt")
   end
 
+  def test_can_lookup_a_letter_and_create_an_charted_array
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
+
+    assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.encode_letter("a", 0..-1)
+  end
+
   def test_can_translate_a_lower_case_letter
     # skip
     nightwriter = NightWriter.new("data/one_letter_a.txt", "data/braille.txt")
     
-    assert_equal "0.\n..\n..\n", nightwriter.translate_to_braille
+    assert_equal "0.\n..\n..", nightwriter.translate_to_braille
   end
 
   def test_translates_message
     # skip
     nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
 
-    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...\n", nightwriter.translate_to_braille
+    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...", nightwriter.translate_to_braille
   end
   
   def test_translates_letter_back_to_english
@@ -66,12 +73,12 @@ class NightWriterTest < Minitest::Test
     # skip
     nightwriter = NightWriter.new("data/eighty_plus.txt", "data/eighty_plus_braille.txt")
 
-    expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n..\n"
+    expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n.."
     
     assert_equal expected, nightwriter.translate_to_braille
   end
-
-  def test_it_can_accept_files_from_the_command_line ## Requires user input: test/night_writer_test.rb "data/message.txt" "data/from_command_line.txt"
+  
+  def test_it_can_accept_files_from_the_command_line # REQUIRES USER INPUT: test/night_writer_test.rb "data/message.txt" "data/from_command_line.txt"
     skip
     nightwriter = NightWriter.new(ARGV[0], ARGV[1])
 

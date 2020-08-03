@@ -26,7 +26,7 @@ module Toolsable
     row_one = array_of_lines[0].scan(/../)
     row_two = array_of_lines[1].scan(/../)
     row_three = array_of_lines[2].scan(/../) 
-    characters_in_split_arrays = row_one.zip(row_two, row_three)
+    row_one.zip(row_two, row_three)
   end
   
   #==== Used in in translate_to_english
@@ -40,6 +40,23 @@ module Toolsable
     in_english.join
   end
 
+  def string_in_braille
+    array_by_40_characters
+    translated = []
+    array_by_40_characters.each do |input|
+      [0,2,4].each do |index|
+        input.chars.each do |letter|
+          if letter == letter.upcase || letter.nil?
+            letter = letter.downcase
+          end
+          translated << encode_letter(letter, index) << encode_letter(letter, index + 1)
+        end
+        translated << "\n"
+      end
+    end
+    translated.join.chomp
+  end
+
   #####=============== TEST METHODS 
 
   #==== used in night_write_test: test_it_can_modify_the_input_file
@@ -49,9 +66,7 @@ module Toolsable
 
   #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
   def can_modify
-    text = read_file(@message)
-    modified = text.gsub(/[ ]/, " modified text ")
-    write_file(@output, modified)
+    write_file( @output, read_file(@message).gsub(/[ ]/, " modified text ") )
   end
 
 end 
