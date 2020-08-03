@@ -20,12 +20,9 @@ module Toolsable
   #==== Used in in string_in_english method to translate_to_english. Organizes the lines of braille into character arrays.
   def characters_in_split_arrays
     array_of_lines = recieve_and_read_file.split("\n")
-    row_one = []
-    row_two = []
-    row_three = []
-    row_one = array_of_lines[0].scan(/../)
-    row_two = array_of_lines[1].scan(/../)
-    row_three = array_of_lines[2].scan(/../) 
+    row_one = array_of_lines[0].scan(/../).to_a
+    row_two = array_of_lines[1].scan(/../).to_a
+    row_three = array_of_lines[2].scan(/../).to_a
     row_one.zip(row_two, row_three)
   end
   
