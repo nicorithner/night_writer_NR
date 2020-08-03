@@ -49,4 +49,11 @@ class ToolsableTest < Minitest::Test
 
     assert_equal "hello modified text world", nightwriter.read_test_file("data/translated.txt")
   end
+
+  def test_string_in_braille_translates_text_to_braille
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/braille.txt")
+
+    assert_equal "0.0.0.0.0....00.0.0.00\n00.00.0..0..00.0000..0\n....0.0.0....00.0.0...", nightwriter.string_in_braille
+  end
 end

@@ -54,7 +54,7 @@ module Toolsable
         translated << "\n"
       end
     end
-    translated.join
+    translated.join.chomp
   end
 
   #####=============== TEST METHODS 
@@ -66,9 +66,7 @@ module Toolsable
 
   #==== night_writer_test: test_it_can_modify_the_input_file & processable_test: test_it_can_write_to_a_file
   def can_modify
-    text = read_file(@message)
-    modified = text.gsub(/[ ]/, " modified text ")
-    write_file(@output, modified)
+    write_file( @output, read_file(@message).gsub(/[ ]/, " modified text ") )
   end
 
 end 
