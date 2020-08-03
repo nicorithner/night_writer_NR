@@ -2,6 +2,13 @@ require "./test/test_helper"
 
 class ToolsableTest < Minitest::Test 
 
+  def test_can_lookup_a_letter_and_create_an_charted_array
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
+    
+    assert_equal ["0", ".", ".", ".", ".", "."], nightwriter.encode_letter("a", 0..-1)
+  end
+
   def test_it_can_read_a_file
     # skip
     test_object = NightWriter.new("data/message.txt", "data/translated.txt")
@@ -20,5 +27,26 @@ class ToolsableTest < Minitest::Test
     nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
 
     assert_equal ["0.", "00", ".."], nightwriter.characters_in_split_arrays[0]
+  end
+
+  def test_string_in_english
+    # skip
+    nightwriter = NightWriter.new("data/hello_braille.txt", "data/braille_to_english.txt")
+    assert_equal "hello world", nightwriter.string_in_english
+  end
+
+  def test_read_test_file_can_read_a_give_file
+    # skip
+    nightwriter = NightWriter.new("data/can_read.txt", "data/translated.txt")
+
+    assert_equal "I can read this", nightwriter.read_test_file("data/can_read.txt")
+  end
+
+  def test_helper_can_modify_changes_the_input_file
+    # skip
+    nightwriter = NightWriter.new("data/message.txt", "data/translated.txt")
+    nightwriter.can_modify
+
+    assert_equal "hello modified text world", nightwriter.read_test_file("data/translated.txt")
   end
 end
