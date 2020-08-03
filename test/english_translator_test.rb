@@ -7,13 +7,6 @@ class EnglishTranslatorTest < Minitest::Test
     assert_instance_of EnglishTranslator, translator
   end
 
-  def test_it_has_attributes
-    translator = EnglishTranslator.new("data/message.txt", "data/translated.txt")
-
-    assert_equal "data/message.txt", translator.message
-    assert_equal "data/translated.txt", translator.output
-  end
-
   def test_translates_letter_back_to_english
     # skip
     translator = EnglishTranslator.new("data/one_braille_character.txt", "data/one_letter_h.txt")
