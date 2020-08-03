@@ -6,7 +6,6 @@ class BrailleTranslator
   include Processable # only handles input and output of files
   include Toolsable # helper methods used to process a translation
 
-  attr_reader :message, :output
   def initialize(message, output)
     @message = message
     @output = output

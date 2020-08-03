@@ -7,13 +7,6 @@ class BrailleTranslatorTest < Minitest::Test
     assert_instance_of BrailleTranslator, translator
   end
 
-  def test_it_has_attributes
-    translator = BrailleTranslator.new("data/message.txt", "data/translated.txt")
-
-    assert_equal "data/message.txt", translator.message
-    assert_equal "data/translated.txt", translator.output
-  end
-
   def test_can_translate_a_lower_case_letter
     # skip
     translator = BrailleTranslator.new("data/one_letter_a.txt", "data/braille.txt")
