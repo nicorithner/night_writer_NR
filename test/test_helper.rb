@@ -4,7 +4,6 @@ require "minitest/autorun"
 require "minitest/pride"
 require "pry"
 
-require "./lib/night_writer"
 require "./lib/braille_translator"
 require "./lib/english_translator"
 require "./lib/alphabet"
