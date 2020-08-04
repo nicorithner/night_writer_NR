@@ -1,3 +1,14 @@
+**Instructions**
+***To translate from english to braille type in your terminal***
+```ruby
+ruby ./lib/night_writer.rb data/text_in_english.txt data/new_file_or_destination.txt
+```
+***To translate from braille to english type in your terminal***
+```ruby
+ruby ./lib/night_writer.rb data/text_in_braille.txt data/new_file_or_destination.txt
+```
+________________________________________
+
 **Night Writer**
 
 **Turing Final Module 1 Project - Cohort 2006 Backend**
