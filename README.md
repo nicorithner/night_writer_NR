@@ -3,11 +3,11 @@
 
 ***To translate from english to braille type in your terminal***
 ```ruby
-ruby ./lib/night_writer.rb data/text_in_english.txt data/new_file_or_destination.txt
+ruby night_writer.rb data/text_in_english.txt data/new_file_or_destination.txt
 ```
 ***To translate from braille to english type in your terminal***
 ```ruby
-ruby ./lib/night_writer.rb data/text_in_braille.txt data/new_file_or_destination.txt
+ruby night_writer_english.rb data/text_in_braille.txt data/new_file_or_destination.txt
 ```
 ________________________________________
 
